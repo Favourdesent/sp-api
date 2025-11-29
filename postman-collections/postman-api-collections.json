@@ -1,0 +1,4811 @@
+{
+	"info": {
+		"_postman_id": "be3cc00f-0ca3-4018-b73e-2f3d1a76205b",
+		"name": "QA -api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "web",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "sign up",
+							"item": [
+								{
+									"name": "existing email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3d54ba7d-668b-4d1e-b1d4-e4f83c55e8df",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.errors.email[0]).to.equal(\"The email has already been taken.\");",
+													"});",
+													"pm.test(\"Status code is 422 \", function () {",
+													"    pm.expect(responseData.status_code).to.equal(422);",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "91f0ebdc-3a81-48d6-9dd8-e2ea58464773",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstname\": \"Favour\",\n    \"lastname\": \"Elijah\",\n    \"country_code\": \"NG\",\n    \"email\": \"favour+1@sproutly.africa\",\n    \"phone\": \"8098110099\",\n    \"phone_code\": \"+234\",\n    \"password\": \"@passwordA1\",\n    \"password_confirmation\": \"@passwordA1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/register"
+									},
+									"response": []
+								},
+								{
+									"name": "password mismatch",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3d54ba7d-668b-4d1e-b1d4-e4f83c55e8df",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.errors.password_confirmation[0]).to.equal(\"The password confirmation field must match password.\");",
+													"});",
+													"pm.test(\"Status code is 422 \", function () {",
+													"    pm.expect(responseData.status_code).to.equal(422);",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "4548a235-9f9f-444b-9fba-af1c0fcc9d27",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstname\": \"Favour\",\n    \"lastname\": \"Elijah\",\n    \"country_code\": \"NG\",\n    \"email\": \"favourr+1@sproutly.africa\",\n    \"phone\": \"80981100994\",\n    \"phone_code\": \"+234\",\n    \"password\": \"@passwordA1\",\n    \"password_confirmation\": \"@passwoeerdA1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/register"
+									},
+									"response": []
+								},
+								{
+									"name": "existing phone no",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3d54ba7d-668b-4d1e-b1d4-e4f83c55e8df",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.errors.phone[0]).to.equal(\"Phone number has been used\");",
+													"});",
+													"pm.test(\"Status code is 422 \", function () {",
+													"    pm.expect(responseData.status_code).to.equal(422);",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "6a8163ad-b7ec-4380-bcb0-c2f8f134a365",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstname\": \"Favour\",\n    \"lastname\": \"Elijah\",\n    \"country_code\": \"NG\",\n    \"email\": \"favourrrr+1@sproutly.africa\",\n    \"phone\": \"9033362914\",\n    \"phone_code\": \"+234\",\n    \"password\": \"@passwordA1\",\n    \"password_confirmation\": \"@passwordA1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/register"
+									},
+									"response": []
+								}
+							],
+							"id": "7002768f-d0f9-4427-9024-a8c073446736"
+						},
+						{
+							"name": "login",
+							"item": [
+								{
+									"name": "login",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "96d9353d-d6d0-483a-9011-7679975f14e1",
+												"exec": [
+													"const response = pm.response.json()",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(response.message).to.equal(\"Login Successful\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(response.status).to.equal(true);",
+													"});",
+													"pm.test(\"Response contain valid user data \", function () {",
+													"    pm.expect(response.data.user.id).to.not.be.null;",
+													"    pm.expect(response.data.public_id).to.not.be.null;",
+													"    pm.expect(response.data.user_compliance_id).to.not.be.null;",
+													"    pm.expect(response.data.active_school_id).to.not.be.null;",
+													"});",
+													"pm.test(\"Response active role \", function () {",
+													"    pm.expect(response.data.active_role.id).to.not.be.null;",
+													"    pm.expect(response.data.active_role.name).to.not.be.null;",
+													"    pm.expect(response.data.active_role.slug).to.not.be.null;",
+													"});",
+													"pm.test(\"Response active role \", function () {",
+													"    pm.expect(response.data.active_school.id).to.not.be.null;",
+													"    pm.expect(response.data.active_school.public_id).to.not.be.null;",
+													"    pm.expect(response.data.active_school.team_id).to.not.be.null;",
+													"    pm.expect(response.data.active_school.compliance).to.not.be.null;",
+													"});",
+													"pm.collectionVariables.set(\"web_access_token\", response.data.token)"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "adc34723-c79c-43e2-bcfd-254797ada164",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"favour1@gmail.com\",\n    \"password\": \"@passwordA1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/login"
+									},
+									"response": []
+								},
+								{
+									"name": "invalid email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "96d9353d-d6d0-483a-9011-7679975f14e1",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"The credentials you entered are incorrect.\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "41a369e6-f97a-47a3-97b0-92e7ab689236",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"faveeeeour+1@sproutly.africa\",\n    \"password\": \"@passwordA1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/login"
+									},
+									"response": []
+								},
+								{
+									"name": "invalid password",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "96d9353d-d6d0-483a-9011-7679975f14e1",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"The credentials you entered are incorrect.\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "df3a6333-cea3-47d4-9a00-6241d4ab80ec",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"favour+1@sproutly.africa\",\n    \"password\": \"@passwordAyyyy1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/login"
+									},
+									"response": []
+								},
+								{
+									"name": "empty  password",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "96d9353d-d6d0-483a-9011-7679975f14e1",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.errors.password[0]).to.equal(\"Email and password required\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "659df132-31e5-4264-a9b5-cea5b16b3ad5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"favour+1@sproutly.africa\",\n    \"password\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/login"
+									},
+									"response": []
+								},
+								{
+									"name": "empty  email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "96d9353d-d6d0-483a-9011-7679975f14e1",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.errors.email[0]).to.equal(\"Email and password required\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "302078bc-6500-415b-a7b4-33b2f3eb0d59",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"\",\n    \"password\": \"@passwordA1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/login"
+									},
+									"response": []
+								}
+							],
+							"id": "626b1369-3533-42d1-98a7-46e0f11b5311"
+						},
+						{
+							"name": "forgot password",
+							"item": [
+								{
+									"name": "forgot password",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0f8d4937-64d2-47f7-beb2-9baafaa94451",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid error message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Reset link has been sent\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "50023af2-3d3c-4cc5-ad3e-7d25c276c578",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"favour+1@sproutly.africa\",\n    \"type\": \"web\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/password/reset/email"
+									},
+									"response": []
+								},
+								{
+									"name": "non existing email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d44fa2a2-8536-4412-ac86-a5b347efe0aa",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"pm.test(\"Response contains error message \", function () {",
+													"    pm.expect(responseData.errors.email[0]).to.equal(\"Email address not registered\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "f146e6f4-6f48-4018-b66e-5eb3d03c9a3f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"favour@yopmail.com\",\n    \"type\": \"web\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/password/reset/email"
+									},
+									"response": []
+								}
+							],
+							"id": "800deef9-4cea-43e6-b1a0-102822473163"
+						},
+						{
+							"name": "change password",
+							"item": [
+								{
+									"name": "change password with old password",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b95765e3-0606-47fb-889f-0205ddf3ddec",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Response contains error message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"The new password cannot be the same as the old password\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "340123ff-11ff-4d39-9a35-c79f19cde082",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"password\": \"@passwordA1\",\n    \"password_confirmation\": \"@passwordA1\",\n    \"otp\": \"537621\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/password/update"
+									},
+									"response": []
+								},
+								{
+									"name": "invalid otp",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b95765e3-0606-47fb-889f-0205ddf3ddec",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Response contains error message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Invalid token\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "27988361-9aac-4ca5-8ba5-65f31bed62d6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"password\": \"@passwordA1\",\n    \"password_confirmation\": \"@passwordA1\",\n    \"otp\": \"530021\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/password/update"
+									},
+									"response": []
+								},
+								{
+									"name": "password mismatch",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b95765e3-0606-47fb-889f-0205ddf3ddec",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"pm.test(\"Response contains error message \", function () {",
+													"    pm.expect(responseData.errors.password[0]).to.equal(\"The password field confirmation does not match.\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "d6ce127b-1f52-4a88-93dd-0122f2ab3fd1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "content-type",
+												"value": "application/json"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"password\": \"@passwordA121\",\n    \"password_confirmation\": \"@passwordA1112\",\n    \"otp\": \"537621\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}api/v1/web/users/auth/password/update"
+									},
+									"response": []
+								}
+							],
+							"id": "cea280b3-c669-4358-8ccd-1c878456384c"
+						}
+					],
+					"id": "677b3589-b3a1-4068-85d6-e1b08faaa490"
+				},
+				{
+					"name": "overview",
+					"item": [
+						{
+							"name": "revenue",
+							"item": [
+								{
+									"name": "revenue trend",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "1be9854a-0dab-4c0b-b1c6-177bd9adb13d",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.type).to.eql(\"line\");",
+													"    pm.expect(responseData.data.data.labels).to.not.eql([]);",
+													"    pm.expect(responseData.data.data.datasets).to.not.eql([]);",
+													"    pm.expect(responseData.data.options.scales).to.not.eql({});",
+													"    pm.expect(responseData.data.options.elements).to.not.eql({});",
+													"    pm.expect(responseData.data.options.plugins).to.not.eql({});",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "d6ad3705-193f-4985-bc1c-4c3f5500f19d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer 3578|B44Gt6ZSpyE9PJm4zHD2XE5X917EHjzVSv7wlnbLfbb18274"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/charts/overview/revenue-trend?from=01-01-2025&to=14-10-2025&frequency=monthly",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"charts",
+												"overview",
+												"revenue-trend"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "14-10-2025"
+												},
+												{
+													"key": "frequency",
+													"value": "monthly"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "revenue",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2526692a-7977-4666-9362-678174d2d445",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Card data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[0].label).to.eql(\"Total Outstanding Payment\");",
+													"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].label).to.eql(\"Total Overdue and Unpaid\");",
+													"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].label).to.eql(\"Total Revenue\");",
+													"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[3].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[3].label).to.eql(\"Partial Payments Outstanding\");",
+													"    pm.expect(responseData.data[3].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[4].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[4].label).to.eql(\"Average Monthly Revenue\");",
+													"    pm.expect(responseData.data[4].value_count).to.be.greaterThanOrEqual(0);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "fb5f6b01-9591-4440-ad6c-dd62da6e779a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer 3578|B44Gt6ZSpyE9PJm4zHD2XE5X917EHjzVSv7wlnbLfbb18274"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/cards/overview/revenue?from=01-01-2025&to=14-10-2025",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"cards",
+												"overview",
+												"revenue"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "14-10-2025"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "payment distribution",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2e5a32a3-da7e-485d-9fd7-db7087b9102e",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Card data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[0].label).to.eql(\"Total Invoiced\");",
+													"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].label).to.eql(\"Total Unpaid\");",
+													"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].label).to.eql(\"Total Paid\");",
+													"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[3].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[3].label).to.eql(\"Total Partially Paid\");",
+													"    pm.expect(responseData.data[3].value_count).to.be.greaterThanOrEqual(0);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "77e9d17a-8863-410f-8d7c-0fab91f8f5a6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "accept-language",
+												"value": "en-US,en;q=0.9"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer 3578|B44Gt6ZSpyE9PJm4zHD2XE5X917EHjzVSv7wlnbLfbb18274"
+											},
+											{
+												"key": "cache-control",
+												"value": "no-cache"
+											},
+											{
+												"key": "origin",
+												"value": "https://dashboard.sproutly.africa"
+											},
+											{
+												"key": "pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "priority",
+												"value": "u=1, i"
+											},
+											{
+												"key": "referer",
+												"value": "https://dashboard.sproutly.africa/"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "sec-fetch-dest",
+												"value": "empty"
+											},
+											{
+												"key": "sec-fetch-mode",
+												"value": "cors"
+											},
+											{
+												"key": "sec-fetch-site",
+												"value": "same-site"
+											},
+											{
+												"key": "user-agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/cards/overview/payment-distribution?from=01-01-2025&to=14-10-2025&compare_frequency=monthly",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"cards",
+												"overview",
+												"payment-distribution"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "14-10-2025"
+												},
+												{
+													"key": "compare_frequency",
+													"value": "monthly"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "overview",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5bc35c99-1060-4b12-9562-6160af0d389a",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Invoices fetched successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.data[0].id).to.not.be.null;",
+													"    pm.expect(responseData.data.data[0].number).to.not.be.null; ",
+													"    pm.expect(responseData.data.data[0].qrcode).to.not.be.null; ",
+													"    pm.expect(responseData.data.data[0].billing_account).to.not.eql({}); ",
+													"    pm.expect(responseData.data.data[0].subgroup).to.not.eql({}); ",
+													"    pm.expect(responseData.data.data[0].billing_session).to.not.eql({}); ",
+													"    pm.expect(responseData.data.data[0].collection).to.not.eql({});",
+													"    pm.expect(responseData.data.data[0].sub_total).to.be.greaterThanOrEqual(0); ",
+													"    pm.expect(responseData.data.data[0].total_payable).to.be.greaterThanOrEqual(0); ",
+													"    pm.expect(responseData.data.data[0].total_paid).to.be.greaterThanOrEqual(0); ",
+													"    pm.expect(responseData.data.data[0].total_issued).to.be.greaterThanOrEqual(0); ",
+													"    pm.expect(responseData.data.data[0].total_discount).to.be.greaterThanOrEqual(0); ",
+													"    pm.expect(responseData.data.data[0].total_outstanding).to.be.greaterThanOrEqual(0); ",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "94b7a909-7eae-41a3-bb8c-868e0947e4fd",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/tables/overview/overdue-payments?page=1&per_page=10&from=01-01-2025&to=09-11-2025",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"tables",
+												"overview",
+												"overdue-payments"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "per_page",
+													"value": "10"
+												},
+												{
+													"key": "search",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "distribution",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7397f455-abae-4b48-ac1a-a0648f196866",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Card data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[0].label).to.eql(\"Banking\");",
+													"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].label).to.eql(\"Accountancy\");",
+													"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].label).to.eql(\"Education\");",
+													"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "ec849b4f-18f2-4734-9641-5758351358fc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/cards/overview/classifications/distribution?from=01-01-2025&to=09-11-2025&sort_direction=desc",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"cards",
+												"overview",
+												"classifications",
+												"distribution"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												},
+												{
+													"key": "sort_direction",
+													"value": "desc"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "donughnut",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "cfba1e5c-fe0d-4b73-8dae-9eec61d69dbd",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.type).to.eql(\"doughnut\");",
+													"    pm.expect(responseData.data.data).to.not.eql({});",
+													"    pm.expect(responseData.data.options).to.not.eql({});",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "bafe2330-2693-4fc8-b1fc-124e6c2d90f0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/charts/overview/classifications/donughnut?from=01-01-2025&to=09-11-2025&sort_direction=desc",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"charts",
+												"overview",
+												"classifications",
+												"donughnut"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												},
+												{
+													"key": "sort_direction",
+													"value": "desc"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "27824b0a-5ac9-46f1-ae02-bac629650a6b"
+						},
+						{
+							"name": "expenses",
+							"item": [
+								{
+									"name": "summary",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "242751e0-6dec-496d-9452-2e4425688b81",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Card data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[0].label).to.eql(\"Total Spend\");",
+													"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[1].label).to.eql(\"Withdrawal\");",
+													"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[2].label).to.eql(\"Billpayment\");",
+													"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[3].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[3].label).to.eql(\"Payroll\");",
+													"    pm.expect(responseData.data[3].value_count).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[4].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[4].label).to.eql(\"Others\");",
+													"    pm.expect(responseData.data[4].value_count).to.be.greaterThanOrEqual(0);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "d793b19d-89ec-431b-a8d5-68aa1dac2b4b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/cards/overview/expense/summary?from=01-01-2025&to=09-11-2025",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"cards",
+												"overview",
+												"expense",
+												"summary"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "trend",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "685597eb-f209-4173-a985-bbdead269d49",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.type).to.eql(\"line\");",
+													"    pm.expect(responseData.data.data.labels).to.not.eql([]);",
+													"    pm.expect(responseData.data.data.datasets).to.not.eql([]);",
+													"    pm.expect(responseData.data.options.scales).to.not.eql({});",
+													"    pm.expect(responseData.data.options.elements).to.not.eql({});",
+													"    pm.expect(responseData.data.options.plugins).to.not.eql({});",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "8921813d-b272-435a-b3c8-f40af93b2a63",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/charts/overview/expense/trend?from=01-01-2025&to=09-11-2025&frequency=monthly",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"charts",
+												"overview",
+												"expense",
+												"trend"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												},
+												{
+													"key": "frequency",
+													"value": "monthly"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "breakdown distribution",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "bdbf7ba6-064e-421c-ae2e-90e791b56f72",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Card data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+													"    pm.expect(responseData.data[0].label).to.eql(\"Withdrawal\");",
+													"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "1d5f14dc-57e6-40dc-ae3e-512290d56e20",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/cards/overview/expense/breakdown-distribution?from=01-01-2025&to=09-11-2025",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"cards",
+												"overview",
+												"expense",
+												"breakdown-distribution"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "breakdown donughnut",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "415acc43-3288-4d14-83fb-7b8e4aa3eef7",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.type).to.eql(\"doughnut\");",
+													"    pm.expect(responseData.data.data).to.not.eql({});",
+													"    pm.expect(responseData.data.options).to.not.eql({});",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "4c970b2d-1ef1-4d73-9048-8e7aeb1f35a4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/analytics/finance/charts/overview/expense/breakdown-doughnut?from=01-01-2025&to=09-11-2025",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"analytics",
+												"finance",
+												"charts",
+												"overview",
+												"expense",
+												"breakdown-doughnut"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "01-01-2025"
+												},
+												{
+													"key": "to",
+													"value": "09-11-2025"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "450e03a9-25ee-4546-945e-4abd8bca5818"
+						},
+						{
+							"name": "population",
+							"item": [
+								{
+									"name": "status",
+									"item": [
+										{
+											"name": "summary",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "4b055aa6-f09c-4f3b-b424-d27d3aa10a30",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[0].label).to.eql(\"Obsolete\");",
+															"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].label).to.eql(\"Active\");",
+															"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].label).to.eql(\"Inactive\");",
+															"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "cb987810-6e5f-4072-afbd-dfb89ee9fd1c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/population/cards/overview-summary?sort_by=status&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"population",
+														"cards",
+														"overview-summary"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "status"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "trend",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b1c28ccc-97e1-4a3f-931e-8988b1c94057",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.chart_data.type).to.eql(\"line\");",
+															"    pm.expect(responseData.data.chart_data.data.labels).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.data.datasets).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.options.scales).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.elements).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.plugins).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "e16d8e05-b7c3-413a-ab53-d1f51a93ef20",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/population/charts/billingaccounts-trend?sort_by=status&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"population",
+														"charts",
+														"billingaccounts-trend"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "status"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "donoughnut",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "795448b7-1678-458d-bec4-ffe61e6ffc67",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.type).to.eql(\"doughnut\");",
+															"    pm.expect(responseData.data.data).to.not.eql({});",
+															"    pm.expect(responseData.data.options).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "1703b8ce-2368-41b2-a0c3-3ec4873e95ba",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/population/charts/billingaccounts-distribution-doughnut?sort_by=status&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"population",
+														"charts",
+														"billingaccounts-distribution-doughnut"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "status"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "24ffd1b3-ca78-432f-8fe1-663604489722"
+								},
+								{
+									"name": "type",
+									"item": [
+										{
+											"name": "summary",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "373deafa-fe06-4f85-9d92-a2cd0b48a8c0",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[0].label).to.eql(\"Student\");",
+															"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].label).to.eql(\"Vendor\");",
+															"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].label).to.eql(\"Staff\");",
+															"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "79604266-ea47-4de6-87ab-bc71504af40a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/population/cards/overview-summary?sort_by=type&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"population",
+														"cards",
+														"overview-summary"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "type"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "trend",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "aebc138e-fb38-41ba-a635-cabe9375ac21",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.chart_data.type).to.eql(\"line\");",
+															"    pm.expect(responseData.data.chart_data.data.labels).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.data.datasets).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.options.scales).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.elements).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.plugins).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "a5d3fa25-a8b9-411e-9f14-823f0c762971",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/population/charts/billingaccounts-trend?sort_by=type&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"population",
+														"charts",
+														"billingaccounts-trend"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "type"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "donughnut",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "314612e8-ba89-4af6-ae63-5412bee7690b",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.type).to.eql(\"doughnut\");",
+															"    pm.expect(responseData.data.data).to.not.eql({});",
+															"    pm.expect(responseData.data.options).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "94a05050-9ff2-45a6-b8c3-79e5c293df4b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/population/charts/billingaccounts-distribution-doughnut?sort_by=type&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"population",
+														"charts",
+														"billingaccounts-distribution-doughnut"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "type"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "d48ce41f-b936-4732-816b-676a1492001d"
+								}
+							],
+							"id": "513fc947-d209-4845-ae08-c5af789a0fef"
+						},
+						{
+							"name": "invoice",
+							"item": [
+								{
+									"name": "channel",
+									"item": [
+										{
+											"name": "summary",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f08a9877-4c30-48d8-9c6c-ed610c39c99a",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[0].label).to.eql(\"Online\");",
+															"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].label).to.eql(\"Paylink\");",
+															"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].label).to.eql(\"Offline\");",
+															"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "1aa6c3a5-6b3f-434f-8d5b-b93972451e2a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/invoices/cards/overview-summary?sort_by=channel&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"invoices",
+														"cards",
+														"overview-summary"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "channel"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "trend",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "4d13aabd-eb95-4d8c-a0b2-d473dfcfdece",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.chart_data.type).to.eql(\"line\");",
+															"    pm.expect(responseData.data.chart_data.data.labels).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.data.datasets).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.options.scales).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.elements).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.plugins).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "7e66c273-67ef-46c9-85bf-e2748a2374d3",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/invoices/charts/invoice-trend?sort_by=channel&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"invoices",
+														"charts",
+														"invoice-trend"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "channel"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "donughnut",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "43bf5c9e-ea61-499b-9194-3555ea685e11",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.type).to.eql(\"doughnut\");",
+															"    pm.expect(responseData.data.data).to.not.eql({});",
+															"    pm.expect(responseData.data.options).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "ffc083d4-f609-49ef-97a0-8095992edd1e",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/invoices/charts/invoice-distribution-doughnut?sort_by=channel&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"invoices",
+														"charts",
+														"invoice-distribution-doughnut"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "channel"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "96387ce9-c256-4b3e-a270-b906d079816f"
+								},
+								{
+									"name": "status",
+									"item": [
+										{
+											"name": "overview summary",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "428688e5-e7e1-401d-a9c4-1b393010c286",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[0].label).to.eql(\"Issued\");",
+															"    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[1].label).to.eql(\"Paid\");",
+															"    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);",
+															"    pm.expect(responseData.data[2].label).to.eql(\"Partially Paid\");",
+															"    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "4716b97c-7480-49ac-87b6-1666ef4bd91b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/invoices/cards/overview-summary?sort_by=status&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"invoices",
+														"cards",
+														"overview-summary"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "status"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "donughnut",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "1db8f97d-8070-4c8d-b12b-7de6f53333a4",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.type).to.eql(\"doughnut\");",
+															"    pm.expect(responseData.data.data).to.not.eql({});",
+															"    pm.expect(responseData.data.options).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "19a51650-e9aa-4763-a2da-2d2535b442c1",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/invoices/charts/invoice-distribution-doughnut?sort_by=status&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"invoices",
+														"charts",
+														"invoice-distribution-doughnut"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "status"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "trend",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f8fe501b-cc91-4481-8d01-0d7061e85958",
+														"exec": [
+															"const responseData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Response contains valid success message \", function () {",
+															"    pm.expect(responseData.message).to.equal(\"Chart data generated successfully\");",
+															"});",
+															"pm.test(\"Status is true \", function () {",
+															"    pm.expect(responseData.status).to.equal(true);",
+															"})",
+															"pm.test(\"Response contain valid data \", function () {",
+															"    pm.expect(responseData.data.chart_data.type).to.eql(\"line\");",
+															"    pm.expect(responseData.data.chart_data.data.labels).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.data.datasets).to.not.eql([]);",
+															"    pm.expect(responseData.data.chart_data.options.scales).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.elements).to.not.eql({});",
+															"    pm.expect(responseData.data.chart_data.options.plugins).to.not.eql({});",
+															"})"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"id": "087d8a61-5480-4a45-9111-3f5b451ed1e7",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{web_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "sec-ch-ua-platform",
+														"value": "\"macOS\""
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+													},
+													{
+														"key": "Referer",
+														"value": "https://dashdev.sproutly.africa/"
+													},
+													{
+														"key": "User-Agent",
+														"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json, text/plain, */*"
+													},
+													{
+														"key": "sec-ch-ua",
+														"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+													},
+													{
+														"key": "sec-ch-ua-mobile",
+														"value": "?0"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}api/v1/web/schools/analytics/invoices/charts/invoice-trend?sort_by=status&from=01-01-2025&to=09-11-2025",
+													"host": [
+														"{{base_url}}api"
+													],
+													"path": [
+														"v1",
+														"web",
+														"schools",
+														"analytics",
+														"invoices",
+														"charts",
+														"invoice-trend"
+													],
+													"query": [
+														{
+															"key": "sort_by",
+															"value": "status"
+														},
+														{
+															"key": "from",
+															"value": "01-01-2025"
+														},
+														{
+															"key": "to",
+															"value": "09-11-2025"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "07a5e8fd-6d2c-4e70-856f-46d1f59fcb6a"
+								}
+							],
+							"id": "b89d5169-b826-4e1b-bb60-0ec605b14641"
+						}
+					],
+					"id": "4877f698-ea53-4c80-812d-a9e7d954ecd9"
+				},
+				{
+					"name": "manage school",
+					"item": [
+						{
+							"name": "manage",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c5fae0a5-dcc4-4d35-834d-22a1831604a7",
+										"exec": [
+											"const responseData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response contains valid success message \", function () {",
+											"    pm.expect(responseData.message).to.equal(\"Schools fetched\");",
+											"});",
+											"pm.test(\"Status is true \", function () {",
+											"    pm.expect(responseData.status).to.equal(true);",
+											"})",
+											"pm.test(\"Response contain valid data \", function () {",
+											"    pm.expect(responseData.data[0].id).to.not.be.null;",
+											"    pm.expect(responseData.data[0].global_id).to.not.be.null;",
+											"    pm.expect(responseData.data[0].name).to.eql(\"Bug Buster\");",
+											"    pm.expect(responseData.data[0].referral_code).to.eql(\"MAY596985612025\");",
+											"    pm.expect(responseData.data[0].logo).to.not.be.null;",
+											"    pm.expect(responseData.data[0].user_id).to.not.be.null;",
+											"    pm.expect(responseData.data[0].credit_score).to.not.be.null;",
+											"    pm.expect(responseData.data[0].code).to.not.be.null;",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "6d72888b-3066-4672-a8f6-125a35de1f9a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{web_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+									},
+									{
+										"key": "Referer",
+										"value": "https://dashdev.sproutly.africa/"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									}
+								],
+								"url": "{{base_url}}api/v1/web/schools/manage"
+							},
+							"response": []
+						},
+						{
+							"name": "manage no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c5fae0a5-dcc4-4d35-834d-22a1831604a7",
+										"exec": [
+											"const responseData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response contains valid success message \", function () {",
+											"    pm.expect(responseData.message).to.equal(\"Not authenticated\");",
+											"});",
+											"pm.test(\"Status is false \", function () {",
+											"    pm.expect(responseData.status).to.equal(false);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "2626113a-0759-4655-855f-e830de52ffd0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+									},
+									{
+										"key": "Referer",
+										"value": "https://dashdev.sproutly.africa/"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									}
+								],
+								"url": "{{base_url}}api/v1/web/schools/manage"
+							},
+							"response": []
+						}
+					],
+					"id": "fd123480-fcaa-4535-9738-7a320a62c1db"
+				},
+				{
+					"name": "notification",
+					"item": [
+						{
+							"name": "count",
+							"item": [
+								{
+									"name": "count",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "58a45ba1-04b5-4759-ab24-4bd03807e500",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.include(\"Notification count fetched successful\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.all_count).to.not.be.null;",
+													"    pm.expect(responseData.data.unread_count).to.not.be.null;",
+													"    pm.expect(responseData.data.read_count).to.not.be.null;",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "56ead1b0-850c-476b-8d3e-17917918ac85",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": "{{base_url}}api/v1/web/schools/notifications/counts"
+									},
+									"response": []
+								},
+								{
+									"name": "count - no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "58a45ba1-04b5-4759-ab24-4bd03807e500",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Not authenticated\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "fceb25cf-f37d-4189-b6e6-923e02597fc9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": "{{base_url}}api/v1/web/schools/notifications/counts"
+									},
+									"response": []
+								}
+							],
+							"id": "a72a9a29-4184-42c2-9db8-e887ad649435"
+						},
+						{
+							"name": "fetch notification",
+							"item": [
+								{
+									"name": "notification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e55952aa-a584-47c4-9f6e-df0890aefa3d",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.include(\"Notifications fetched successful\");",
+													"});",
+													"pm.test(\"Status is true \", function () {",
+													"    pm.expect(responseData.status).to.equal(true);",
+													"})",
+													"pm.test(\"Response contain valid data \", function () {",
+													"    pm.expect(responseData.data.data[0].id).to.not.be.null;",
+													"    pm.expect(responseData.data.data[0].title).to.not.be.null;",
+													"    pm.expect(responseData.data.data[0].is_read).to.not.be.null;",
+													"    pm.expect(responseData.data.data[0].read_at).to.not.be.null;",
+													"    pm.expect(responseData.data.data[0].show).to.not.be.null;",
+													"    pm.expect(responseData.data.data[0].body).to.not.eql(\"\");",
+													"    pm.expect(responseData.data.data[0].read_by).to.not.eql([]);",
+													"    pm.expect(responseData.data.data[0].channel).to.eql(\"email\");",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "450ef9a1-059a-4635-be21-e77dd6a2bd01",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{web_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/notifications?page=1",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"notifications"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "notification - no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e55952aa-a584-47c4-9f6e-df0890aefa3d",
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Response contains valid success message \", function () {",
+													"    pm.expect(responseData.message).to.equal(\"Not authenticated\");",
+													"});",
+													"pm.test(\"Status is false \", function () {",
+													"    pm.expect(responseData.status).to.equal(false);",
+													"})"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "d974dfcd-468e-405c-b761-2632a585e0f3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\""
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 2209|pjxlO35YlZuS2dAu6JNCiA5nnqryI7iPAC2k2GEg27ec2a13"
+											},
+											{
+												"key": "Referer",
+												"value": "https://dashdev.sproutly.africa/"
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*"
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}api/v1/web/schools/notifications?page=1",
+											"host": [
+												"{{base_url}}api"
+											],
+											"path": [
+												"v1",
+												"web",
+												"schools",
+												"notifications"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "1af897e9-9113-4e97-8f7c-dd78ed06dfbe"
+						}
+					],
+					"id": "18c4cb39-cf59-4178-a409-e8ccc1e2efce"
+				},
+				{
+					"name": "subscription",
+					"item": [
+						{
+							"name": "subscription",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "719e9bbe-644c-4ed0-92bc-10b21d06dbaa",
+										"exec": [
+											"const responseData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response contains valid success message \", function () {",
+											"    pm.expect(responseData.message).to.include(\"Active subscriptions\");",
+											"});",
+											"pm.test(\"Status is true \", function () {",
+											"    pm.expect(responseData.status).to.equal(true);",
+											"})",
+											"pm.test(\"Response contain valid data \", function () {",
+											"    pm.expect(responseData.data.id).to.not.be.null;",
+											"    pm.expect(responseData.data.frequency).to.not.be.null;",
+											"    pm.expect(responseData.data.amount).to.not.be.null;",
+											"    pm.expect(responseData.data.charge_day).to.not.be.null;",
+											"    pm.expect(responseData.data.next_payment_date).to.not.be.null;",
+											"    pm.expect(responseData.data.payment_frequency).to.not.be.null;",
+											"    pm.expect(responseData.data.active).to.not.be.null;",
+											"    pm.expect(responseData.data.subscription).to.not.eql({});",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "e512fce0-12a5-42b4-a3fd-894e68abbf5c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{web_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en-US,en;q=0.9"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer 2518|V5wtbocyGzWKTgIPE79pQBFO057UtAsY5RhQYQFG5e3a41c0"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "origin",
+										"value": "https://dashdev.sproutly.africa"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "priority",
+										"value": "u=1, i"
+									},
+									{
+										"key": "referer",
+										"value": "https://dashdev.sproutly.africa/"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/web/schools/setting/subscriptions?status=active",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"web",
+										"schools",
+										"setting",
+										"subscriptions"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "active"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "subscription - no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "719e9bbe-644c-4ed0-92bc-10b21d06dbaa",
+										"exec": [
+											"const responseData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response contains valid success message \", function () {",
+											"    pm.expect(responseData.message).to.equal(\"Not authenticated\");",
+											"});",
+											"pm.test(\"Status is false \", function () {",
+											"    pm.expect(responseData.status).to.equal(false);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "47d61c34-38b8-4af3-b84f-ff2ba9008df4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en-US,en;q=0.9"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "origin",
+										"value": "https://dashdev.sproutly.africa"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "priority",
+										"value": "u=1, i"
+									},
+									{
+										"key": "referer",
+										"value": "https://dashdev.sproutly.africa/"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}api/v1/web/schools/setting/subscriptions?status=active",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"web",
+										"schools",
+										"setting",
+										"subscriptions"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "active"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "c2f53a8d-774e-4bf6-9851-697299f8198f"
+				}
+			],
+			"id": "cf730865-a4aa-46fd-b4c4-b32d70c03442"
+		}
+	],
+	"variable": [
+		{
+			"key": "mobile_access_token",
+			"value": ""
+		},
+		{
+			"key": "web_access_token",
+			"value": ""
+		},
+		{
+			"key": "studentBa_id",
+			"value": ""
+		}
+	]
+}
