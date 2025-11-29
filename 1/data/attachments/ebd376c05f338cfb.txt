@@ -1,0 +1,15 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 422", function () {
+    pm.response.to.have.status(422);
+});
+
+pm.test("Response contains valid error message ", function () {
+    pm.expect(responseData.errors.password_confirmation[0]).to.equal("The password confirmation field must match password.");
+});
+pm.test("Status code is 422 ", function () {
+    pm.expect(responseData.status_code).to.equal(422);
+});
+pm.test("Status is false ", function () {
+    pm.expect(responseData.status).to.equal(false);
+});

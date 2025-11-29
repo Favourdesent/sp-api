@@ -1,0 +1,21 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(responseData.message).to.equal("Schools fetched");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+})
+pm.test("Response contain valid data ", function () {
+    pm.expect(responseData.data[0].id).to.not.be.null;
+    pm.expect(responseData.data[0].global_id).to.not.be.null;
+    pm.expect(responseData.data[0].name).to.eql("Bug Buster");
+    pm.expect(responseData.data[0].referral_code).to.eql("MAY596985612025");
+    pm.expect(responseData.data[0].logo).to.not.be.null;
+    pm.expect(responseData.data[0].user_id).to.not.be.null;
+    pm.expect(responseData.data[0].credit_score).to.not.be.null;
+    pm.expect(responseData.data[0].code).to.not.be.null;
+})

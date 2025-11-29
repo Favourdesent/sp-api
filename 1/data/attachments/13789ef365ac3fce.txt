@@ -1,0 +1,26 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(responseData.message).to.equal("Invoices fetched successfully");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+})
+pm.test("Response contain valid data ", function () {
+    pm.expect(responseData.data.data[0].id).to.not.be.null;
+    pm.expect(responseData.data.data[0].number).to.not.be.null; 
+    pm.expect(responseData.data.data[0].qrcode).to.not.be.null; 
+    pm.expect(responseData.data.data[0].billing_account).to.not.eql({}); 
+    pm.expect(responseData.data.data[0].subgroup).to.not.eql({}); 
+    pm.expect(responseData.data.data[0].billing_session).to.not.eql({}); 
+    pm.expect(responseData.data.data[0].collection).to.not.eql({});
+    pm.expect(responseData.data.data[0].sub_total).to.be.greaterThanOrEqual(0); 
+    pm.expect(responseData.data.data[0].total_payable).to.be.greaterThanOrEqual(0); 
+    pm.expect(responseData.data.data[0].total_paid).to.be.greaterThanOrEqual(0); 
+    pm.expect(responseData.data.data[0].total_issued).to.be.greaterThanOrEqual(0); 
+    pm.expect(responseData.data.data[0].total_discount).to.be.greaterThanOrEqual(0); 
+    pm.expect(responseData.data.data[0].total_outstanding).to.be.greaterThanOrEqual(0); 
+})

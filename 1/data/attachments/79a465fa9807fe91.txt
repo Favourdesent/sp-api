@@ -1,0 +1,11 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid error message ", function () {
+    pm.expect(responseData.message).to.equal("Reset link has been sent");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+});

@@ -1,0 +1,5 @@
+{
+    "password": "@passwordA121",
+    "password_confirmation": "@passwordA1112",
+    "otp": "537621"
+}

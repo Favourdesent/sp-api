@@ -1,0 +1,21 @@
+{
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "en-US,en;q=0.9",
+    "authorization": "Bearer 2518|V5wtbocyGzWKTgIPE79pQBFO057UtAsY5RhQYQFG5e3a41c0",
+    "cache-control": "no-cache",
+    "origin": "https://dashdev.sproutly.africa",
+    "pragma": "no-cache",
+    "priority": "u=1, i",
+    "referer": "https://dashdev.sproutly.africa/",
+    "sec-ch-ua": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"macOS\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+    "Postman-Token": "78ffee80-c01f-49c2-9bde-60c7075fa082",
+    "Host": "api",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}

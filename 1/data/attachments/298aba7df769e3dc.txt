@@ -1,0 +1,22 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(responseData.message).to.equal("Chart data generated successfully");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+})
+pm.test("Response contain valid data ", function () {
+    pm.expect(responseData.data[0].value).to.be.greaterThanOrEqual(0);
+    pm.expect(responseData.data[0].label).to.eql("Obsolete");
+    pm.expect(responseData.data[0].value_count).to.be.greaterThanOrEqual(0);
+    pm.expect(responseData.data[1].value).to.be.greaterThanOrEqual(0);
+    pm.expect(responseData.data[1].label).to.eql("Active");
+    pm.expect(responseData.data[1].value_count).to.be.greaterThanOrEqual(0);
+    pm.expect(responseData.data[2].value).to.be.greaterThanOrEqual(0);
+    pm.expect(responseData.data[2].label).to.eql("Inactive");
+    pm.expect(responseData.data[2].value_count).to.be.greaterThanOrEqual(0);
+})

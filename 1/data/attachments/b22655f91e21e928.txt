@@ -1,0 +1,16 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(responseData.message).to.include("Notification count fetched successful");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+})
+pm.test("Response contain valid data ", function () {
+    pm.expect(responseData.data.all_count).to.not.be.null;
+    pm.expect(responseData.data.unread_count).to.not.be.null;
+    pm.expect(responseData.data.read_count).to.not.be.null;
+})

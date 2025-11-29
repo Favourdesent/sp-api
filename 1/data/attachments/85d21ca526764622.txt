@@ -1,0 +1,4 @@
+{
+    "email": "faveeeeour+1@sproutly.africa",
+    "password": "@passwordA1"
+}

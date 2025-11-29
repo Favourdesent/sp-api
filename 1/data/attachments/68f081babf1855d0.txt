@@ -1,0 +1,4 @@
+{
+    "email": "favour+1@sproutly.africa",
+    "type": "web"
+}

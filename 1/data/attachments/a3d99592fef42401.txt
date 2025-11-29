@@ -1,0 +1,11 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 400", function () {
+    pm.response.to.have.status(400);
+});
+pm.test("Response contains error message ", function () {
+    pm.expect(responseData.message).to.equal("The new password cannot be the same as the old password");
+});
+pm.test("Status is false ", function () {
+    pm.expect(responseData.status).to.equal(false);
+});

@@ -1,0 +1,21 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(responseData.message).to.include("Active subscriptions");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+})
+pm.test("Response contain valid data ", function () {
+    pm.expect(responseData.data.id).to.not.be.null;
+    pm.expect(responseData.data.frequency).to.not.be.null;
+    pm.expect(responseData.data.amount).to.not.be.null;
+    pm.expect(responseData.data.charge_day).to.not.be.null;
+    pm.expect(responseData.data.next_payment_date).to.not.be.null;
+    pm.expect(responseData.data.payment_frequency).to.not.be.null;
+    pm.expect(responseData.data.active).to.not.be.null;
+    pm.expect(responseData.data.subscription).to.not.eql({});
+})

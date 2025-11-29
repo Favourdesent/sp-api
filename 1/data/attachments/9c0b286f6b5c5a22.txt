@@ -1,0 +1,29 @@
+const response = pm.response.json()
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(response.message).to.equal("Login Successful");
+});
+pm.test("Status is true ", function () {
+    pm.expect(response.status).to.equal(true);
+});
+pm.test("Response contain valid user data ", function () {
+    pm.expect(response.data.user.id).to.not.be.null;
+    pm.expect(response.data.public_id).to.not.be.null;
+    pm.expect(response.data.user_compliance_id).to.not.be.null;
+    pm.expect(response.data.active_school_id).to.not.be.null;
+});
+pm.test("Response active role ", function () {
+    pm.expect(response.data.active_role.id).to.not.be.null;
+    pm.expect(response.data.active_role.name).to.not.be.null;
+    pm.expect(response.data.active_role.slug).to.not.be.null;
+});
+pm.test("Response active role ", function () {
+    pm.expect(response.data.active_school.id).to.not.be.null;
+    pm.expect(response.data.active_school.public_id).to.not.be.null;
+    pm.expect(response.data.active_school.team_id).to.not.be.null;
+    pm.expect(response.data.active_school.compliance).to.not.be.null;
+});
+pm.collectionVariables.set("web_access_token", response.data.token)

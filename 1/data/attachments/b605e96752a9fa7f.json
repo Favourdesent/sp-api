@@ -1,0 +1,21 @@
+{
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "en-US,en;q=0.9",
+    "cache-control": "no-cache",
+    "content-type": "application/json",
+    "origin": "https://dashboard.sproutly.africa",
+    "pragma": "no-cache",
+    "priority": "u=1, i",
+    "referer": "https://dashboard.sproutly.africa/",
+    "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"macOS\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Postman-Token": "e3a73c74-dc63-4c13-98f1-c6d27f2391f2",
+    "Host": "api",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}

@@ -1,0 +1,10 @@
+{
+    "firstname": "Favour",
+    "lastname": "Elijah",
+    "country_code": "NG",
+    "email": "favourrrr+1@sproutly.africa",
+    "phone": "9033362914",
+    "phone_code": "+234",
+    "password": "@passwordA1",
+    "password_confirmation": "@passwordA1"
+}

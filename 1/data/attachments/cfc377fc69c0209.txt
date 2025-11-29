@@ -1,0 +1,21 @@
+const responseData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response contains valid success message ", function () {
+    pm.expect(responseData.message).to.include("Notifications fetched successful");
+});
+pm.test("Status is true ", function () {
+    pm.expect(responseData.status).to.equal(true);
+})
+pm.test("Response contain valid data ", function () {
+    pm.expect(responseData.data.data[0].id).to.not.be.null;
+    pm.expect(responseData.data.data[0].title).to.not.be.null;
+    pm.expect(responseData.data.data[0].is_read).to.not.be.null;
+    pm.expect(responseData.data.data[0].read_at).to.not.be.null;
+    pm.expect(responseData.data.data[0].show).to.not.be.null;
+    pm.expect(responseData.data.data[0].body).to.not.eql("");
+    pm.expect(responseData.data.data[0].read_by).to.not.eql([]);
+    pm.expect(responseData.data.data[0].channel).to.eql("email");
+})
